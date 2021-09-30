@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { createContext, ReactNode, useContext, useState } from 'react';
 import { toast } from 'react-toastify';
 import { api } from '../services/api';
@@ -23,18 +24,26 @@ const CartContext = createContext<CartContextData>({} as CartContextData);
 
 export function CartProvider({ children }: CartProviderProps): JSX.Element {
   const [cart, setCart] = useState<Product[]>(() => {
-    // const storagedCart = Buscar dados do localStorage
+    console.log("aqui")
 
-    // if (storagedCart) {
-    //   return JSON.parse(storagedCart);
-    // }
+    const storagedCart = localStorage.getItem('@RocketShoes:cart')
+
+    if (storagedCart) {
+      return JSON.parse(storagedCart);
+    }
 
     return [];
   });
 
   const addProduct = async (productId: number) => {
     try {
-      // TODO
+      let response = await axios.get(`http://localhost:3333/products/${productId}`)
+      let product = response.data 
+
+      setCart([...cart, product])
+      
+      localStorage.setItem('@RocketShoes:cart', JSON.stringify([...cart, product]))
+
     } catch {
       // TODO
     }
@@ -42,7 +51,13 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
 
   const removeProduct = (productId: number) => {
     try {
-      // TODO
+
+      let cartRemove = cart
+      cartRemove = cartRemove.filter(product => product.id !== productId)
+      
+      setCart(cartRemove)
+      localStorage.setItem('@RocketShoes:cart', JSON.stringify(cartRemove))
+
     } catch {
       // TODO
     }
