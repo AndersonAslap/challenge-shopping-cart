@@ -28,31 +28,7 @@ const Home = (): JSX.Element => {
 
   const cartItemsAmount = cart.reduce((sumAmount, product) => {
 
-    switch(product.id) {
-      case 1:
-        sumAmount = {...sumAmount, 1: product.amount}
-        break;
-
-      case 2:
-        sumAmount = {...sumAmount, 2: product.amount}
-        break;
-
-      case 3:
-        sumAmount = {...sumAmount, 3: product.amount}
-        break;
-
-      case 4:
-        sumAmount = {...sumAmount, 4: product.amount}
-        break;
-      
-      case 5:
-        sumAmount = {...sumAmount, 5: product.amount}
-        break;
-      
-      case 6:
-        sumAmount = {...sumAmount, 6: product.amount}
-        break;
-    }
+    sumAmount[product.id] = product.amount
 
     return sumAmount
 
