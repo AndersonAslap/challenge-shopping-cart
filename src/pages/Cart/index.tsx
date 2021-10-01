@@ -25,6 +25,8 @@ const Cart = (): JSX.Element => {
      priceFormatted: formatPrice(product.price),
      subTotal: formatPrice(product.price * product.amount)
   }))
+
+  cartFormatted.sort()
   
   const total = formatPrice(
                   cart.reduce((sumTotal, product) => {
