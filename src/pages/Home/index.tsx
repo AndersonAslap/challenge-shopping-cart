@@ -5,7 +5,7 @@ import { ProductList } from './styles';
 import { api } from '../../services/api';
 import { formatPrice } from '../../util/format';
 import { useCart } from '../../hooks/useCart';
-import axios from 'axios';
+
 
 interface Product {
   id: number;
@@ -36,7 +36,7 @@ const Home = (): JSX.Element => {
 
   useEffect(() => {
     async function loadProducts() {
-      await axios.get('http://localhost:3333/products')
+      await api.get('http://localhost:3333/products')
         .then(response => setProducts(response.data))
     }
 
@@ -54,7 +54,7 @@ const Home = (): JSX.Element => {
         <li key={product.id}>
           <img src={product.image} alt={product.title} />
           <strong>{product.title}</strong>
-          <span>R$ {product.price}</span>
+          <span>{formatPrice(product.price)}</span>
           <button
             type="button"
             data-testid="add-product-button"
