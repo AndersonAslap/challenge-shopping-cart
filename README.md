@@ -1,17 +1,19 @@
 <h1>ROCKETSHOES</h1>
 
-<h3>Home</h3>
+> Home
+
 <img src="src/assets/rockeatshoes.gif" />
 
 <hr>
 
-<h3>Carrinho de compras</h3>
+>Carrinho de compras
+
 <img src="src/assets/carrinho.gif" />
 
 <hr>
 <br>
 
-<h3>Sobre o Rocketshoes</h3>
+> Sobre o Rocketshoes
 
 <p>
 O Rocketshoes é um e-commerce de sapatos
@@ -20,7 +22,9 @@ para seu carrinho de compras.
 </p>
 
 <br>
-<h3>Tecnologias Ultilizadas</h3>
+
+> Tecnologias Ultilizadas
+
 <p>
 <ul>
   <li>React</li>
